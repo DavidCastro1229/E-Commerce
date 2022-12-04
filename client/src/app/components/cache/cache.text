@@ -1,0 +1,32 @@
+
+**validar si un dato existe en la base de datos**
+
+  const verificar = await dataBase.query('SELECT EXISTS(select 1 from usuarios WHERE correo_admin = $1)', [credencialesUser.correo_admin]);
+  if(verificar.rows[0].exists=== true){
+    return res.json({
+      verificar:true,
+      mensaje:"el correo ya esta en uso, prueba ocn otro"})
+  }
+
+    // const detener = (entries, observer)=>{
+  //   if(entries[0].isIntersecting === false){
+  //     nav2Ref.current.classList.add("Observation")
+  //   }else{
+  //     nav2Ref.current.classList.remove("Observation")
+  //   }
+  // }
+  // const viewport = new IntersectionObserver(detener, {
+  //   root:null,
+  //   rootMargin: "-100px 0px 0px 0px",
+  //   threshold:0
+  // })
+  // if(navRef.current){
+  //   viewport.observe(navRef.current)
+  // }
+
+  InputProps={{
+          endAdornment: (
+            <InputAdornment position="end" >
+              <SearchIcon />
+            </InputAdornment>
+          )}}
