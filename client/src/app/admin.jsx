@@ -1,12 +1,10 @@
 import { useState, useEffect} from "react";
-import {useNavigate} from 'react-router-dom';
 import Axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import {TextField, FormGroup, Button} from "@mui/material"
 import { Cargando } from "./components/routes/header";
 
 export default function Admin(){
-    const navegar=useNavigate();
     const [imgPrevia, setImgPrevia]=useState({peso:''});
     const [imgNube, setImgNube]=useState("");
     const [estado, setEstado]=useState(false);
@@ -61,11 +59,11 @@ setEstado(true);
         console.log(res)
     }
     const navegarSeccion = (e)=>{
-        if(e.target.name == "subirProducto"){
+        if(e.target.name === "subirProducto"){
             setEstadoForm(true);
              setEstadoVentas(false)
             }
-        if(e.target.name == "ventas"){
+        if(e.target.name === "ventas"){
             mostrarVentas()
              setEstadoForm(false)
         }
@@ -105,11 +103,13 @@ setEstado(true);
     <aside className="alto50">
         <img src={imgPrevia.peso} className="alto100" />
     </aside>
-    <TextField  fullWidth  margin="dense" label="genero del producto" variant="outlined" name="genero" />
-    <TextField  fullWidth  margin="dense" label="colores del producto" variant="outlined" name="color" />
+    <TextField  fullWidth  margin="dense" label="Genero del producto" variant="outlined" name="genero" />
+    <TextField  fullWidth  margin="dense" label="Colores del producto" variant="outlined" name="color" />
+    <TextField  fullWidth  margin="dense" label="Estilo" variant="outlined" name="estilo" />
+    <TextField  fullWidth  margin="dense" label="Tipo" variant="outlined" name="tipo" />
     <h1 className="resaltarText">coloca si el producto esta disponible en tu tienda</h1>
     <p className='textPequeño' >si marcas el producto como "no diponible" el producto no aparecera en tu tienda</p>
-    <TextField  fullWidth  margin="dense" label="disponibliidad" variant="outlined" name="disponibliidad" />
+    <TextField  fullWidth  margin="dense" label="Disponible" variant="outlined" name="disponibilidad" />
     <p className='textPequeño' >coloca palabras relacionda con el producto, esto sirve para hacer que los sistema de busqueda sean mas precisos con el producto que el usuario busca</p>
     <TextField  fullWidth  margin="dense" label="etiquetas" variant="outlined" name="etiquetas" />
 </FormGroup> 
