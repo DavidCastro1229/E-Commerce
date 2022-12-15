@@ -33,12 +33,14 @@ const productos =async (req, res)=>{
 }
 
 const subirProducto =async (req, res)=>{
+  try {    
     const { producto, precio, descripcion, img, uuid, tipo, estilo, genero, color,  disponibilidad, etiquetas} = req.body
     console.log(req.body)
     await dataBase.query('INSERT INTO productos ( producto, precio, descripcion, img, uuid, tipo, estilo, genero, color,  disponibilidad, etiquetas ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11 )', [ producto, precio, descripcion, img, uuid, tipo, estilo, genero, color,  disponibilidad, etiquetas]);
-    // await dataBase.query('INSERT INTO funciones ( uuid_key_funciones, tecnologias, almacenamiento, ssl, layout, pasarela_pago, dominio, tipo, herramienta_admin ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9 )', [uuid,tecnologias, almacenamiento, ssl, layout, pasarela_pago, dominio, tipo, herramienta_admin]);
-    // await dataBase.query('INSERT INTO prototipo_producto (uuid_prototipo, html, css) VALUES($1, $2, $3 )', [uuid, html, css]);
     res.send('peticion post correcta')
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const previaProducto = async (req, res) => {
